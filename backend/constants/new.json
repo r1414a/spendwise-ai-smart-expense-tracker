@@ -1,0 +1,142 @@
+[
+  {
+    "description_original": "morning tea and snacks",
+    "description_processed": "tea and snacks",
+    "category": "Food & drinks",
+    "amount": 50,
+    "date": { "$date": "2026-02-01T08:00:00.000Z" }
+  },
+  {
+    "description_original": "monthly rent",
+    "description_processed": "house rent",
+    "category": "Rent",
+    "amount": 10000,
+    "date": { "$date": "2026-02-01T10:00:00.000Z" }
+  },
+  {
+    "description_original": "grocery shopping",
+    "description_processed": "groceries",
+    "category": "Groceries",
+    "amount": 550,
+    "date": { "$date": "2026-02-02T11:30:00.000Z" }
+  },
+  {
+    "description_original": "auto fare to office",
+    "description_processed": "auto fare",
+    "category": "Commute",
+    "amount": 80,
+    "date": { "$date": "2026-02-03T08:15:00.000Z" }
+  },
+  {
+    "description_original": "movie ticket weekend",
+    "description_processed": "movie ticket",
+    "category": "Entertainment",
+    "amount": 350,
+    "date": { "$date": "2026-02-05T19:00:00.000Z" }
+  },
+  {
+    "description_original": "gym fee",
+    "description_processed": "gym membership",
+    "category": "Fitness",
+    "amount": 1200,
+    "date": { "$date": "2026-02-06T06:30:00.000Z" }
+  },
+  {
+    "description_original": "internet bill",
+    "description_processed": "internet bill",
+    "category": "Bills & utilities",
+    "amount": 799,
+    "date": { "$date": "2026-02-07T09:00:00.000Z" }
+  },
+  {
+    "description_original": "doctor consultation",
+    "description_processed": "medical consultation",
+    "category": "Medical",
+    "amount": 500,
+    "date": { "$date": "2026-02-09T15:00:00.000Z" }
+  },
+  {
+    "description_original": "dinner out",
+    "description_processed": "restaurant dinner",
+    "category": "Food & drinks",
+    "amount": 950,
+    "date": { "$date": "2026-02-10T20:00:00.000Z" }
+  },
+  {
+    "description_original": "ATM withdrawal",
+    "description_processed": "ATM cash withdrawal",
+    "category": "ATM",
+    "amount": 2500,
+    "date": { "$date": "2026-02-11T11:00:00.000Z" }
+  },
+  {
+    "description_original": "kids school fees",
+    "description_processed": "school fees",
+    "category": "Education",
+    "amount": 2500,
+    "date": { "$date": "2026-02-12T09:30:00.000Z" }
+  },
+  {
+    "description_original": "shopping clothes",
+    "description_processed": "clothes shopping",
+    "category": "Shopping",
+    "amount": 1800,
+    "date": { "$date": "2026-02-14T18:00:00.000Z" }
+  },
+  {
+    "description_original": "insurance premium",
+    "description_processed": "insurance premium",
+    "category": "Insurance",
+    "amount": 1800,
+    "date": { "$date": "2026-02-15T09:30:00.000Z" }
+  },
+  {
+    "description_original": "restaurant dinner family",
+    "description_processed": "family dinner",
+    "category": "Food & drinks",
+    "amount": 1200,
+    "date": { "$date": "2026-02-16T20:00:00.000Z" }
+  },
+  {
+    "description_original": "charity donation",
+    "description_processed": "charity donation",
+    "category": "Charity",
+    "amount": 250,
+    "date": { "$date": "2026-02-18T08:30:00.000Z" }
+  },
+  {
+    "description_original": "bus travel to pune",
+    "description_processed": "bus travel",
+    "category": "Travel",
+    "amount": 450,
+    "date": { "$date": "2026-02-19T06:00:00.000Z" }
+  },
+  {
+    "description_original": "cleaning supplies",
+    "description_processed": "household cleaning supplies",
+    "category": "Household",
+    "amount": 300,
+    "date": { "$date": "2026-02-21T16:00:00.000Z" }
+  },
+  {
+    "description_original": "movie night snacks",
+    "description_processed": "movie night snacks",
+    "category": "Entertainment",
+    "amount": 350,
+    "date": { "$date": "2026-02-23T21:00:00.000Z" }
+  },
+  {
+    "description_original": "bank fee",
+    "description_processed": "bank fee",
+    "category": "Fees & charges",
+    "amount": 150,
+    "date": { "$date": "2026-02-25T13:00:00.000Z" }
+  },
+  {
+    "description_original": "milk and bread",
+    "description_processed": "milk and bread",
+    "category": "Groceries",
+    "amount": 100,
+    "date": { "$date": "2026-02-27T08:00:00.000Z" }
+  }
+]

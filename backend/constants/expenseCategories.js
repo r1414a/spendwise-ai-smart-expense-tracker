@@ -1,0 +1,1 @@
+export const CATEGORIES = ["Food & drinks", "Family & pets", "Personal care", "Bills & utilities", "Charity", "Groceries", "Fuel", "ATM", "Commute", "EMIs & Loans", "Education", "Entertainment", "Fitness", "Household", "Insurance", "Medical", "Rent", "Shopping", "Travel", "Fees & charges", "Miscellaneous"]

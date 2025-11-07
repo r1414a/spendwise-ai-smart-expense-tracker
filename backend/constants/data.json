@@ -1,0 +1,268 @@
+[
+  {
+    "description_original": "bhindi",
+    "description_processed": "ladyfinger",
+    "category": "Groceries",
+    "amount": 40,
+    "date": "2025-09-01"
+  },
+  {
+    "description_original": "nimbu",
+    "description_processed": "lemon",
+    "category": "Groceries",
+    "amount": 30,
+    "date": "2025-09-02"
+  },
+  {
+    "description_original": "Domino's Pizza",
+    "description_processed": "Domino's Pizza",
+    "category": "Food & drinks",
+    "amount": 450,
+    "date": "2025-09-03"
+  },
+  {
+    "description_original": "Pet food",
+    "description_processed": "dog food",
+    "category": "Family & pets",
+    "amount": 600,
+    "date": "2025-09-04"
+  },
+  {
+    "description_original": "Hair oil",
+    "description_processed": "hair oil",
+    "category": "Personal care",
+    "amount": 150,
+    "date": "2025-09-05"
+  },
+  {
+    "description_original": "Electricity bill",
+    "description_processed": "electricity bill",
+    "category": "Bills & utilities",
+    "amount": 1400,
+    "date": "2025-09-06"
+  },
+  {
+    "description_original": "Mandir daan",
+    "description_processed": "temple donation",
+    "category": "Charity",
+    "amount": 200,
+    "date": "2025-09-07"
+  },
+  {
+    "description_original": "petrol",
+    "description_processed": "fuel",
+    "category": "Fuel",
+    "amount": 1200,
+    "date": "2025-09-08"
+  },
+  {
+    "description_original": "ATM withdrawal",
+    "description_processed": "ATM cash",
+    "category": "ATM",
+    "amount": 2000,
+    "date": "2025-09-09"
+  },
+  {
+    "description_original": "Metro ticket",
+    "description_processed": "metro travel fare",
+    "category": "Commute",
+    "amount": 60,
+    "date": "2025-09-10"
+  },
+  {
+    "description_original": "Home loan EMI",
+    "description_processed": "home loan payment",
+    "category": "EMIs & Loans",
+    "amount": 15000,
+    "date": "2025-09-11"
+  },
+  {
+    "description_original": "School fees",
+    "description_processed": "school fees",
+    "category": "Education",
+    "amount": 3500,
+    "date": "2025-09-12"
+  },
+  {
+    "description_original": "Netflix subscription",
+    "description_processed": "Netflix subscription",
+    "category": "Entertainment",
+    "amount": 499,
+    "date": "2025-09-13"
+  },
+  {
+    "description_original": "Gym fees",
+    "description_processed": "gym membership",
+    "category": "Fitness",
+    "amount": 700,
+    "date": "2025-09-14"
+  },
+  {
+    "description_original": "Floor cleaner",
+    "description_processed": "floor cleaner",
+    "category": "Household",
+    "amount": 220,
+    "date": "2025-09-15"
+  },
+  {
+    "description_original": "LIC premium",
+    "description_processed": "life insurance premium",
+    "category": "Insurance",
+    "amount": 2500,
+    "date": "2025-09-16"
+  },
+  {
+    "description_original": "Doctor visit",
+    "description_processed": "clinic consultation",
+    "category": "Medical",
+    "amount": 800,
+    "date": "2025-09-17"
+  },
+  {
+    "description_original": "House rent",
+    "description_processed": "monthly rent",
+    "category": "Rent",
+    "amount": 10000,
+    "date": "2025-09-18"
+  },
+  {
+    "description_original": "Amazon order",
+    "description_processed": "online shopping",
+    "category": "Shopping",
+    "amount": 1800,
+    "date": "2025-09-19"
+  },
+  {
+    "description_original": "Train ticket to Nagpur",
+    "description_processed": "train travel",
+    "category": "Travel",
+    "amount": 950,
+    "date": "2025-09-20"
+  },
+  {
+    "description_original": "Bank service charge",
+    "description_processed": "bank fees",
+    "category": "Fees & charges",
+    "amount": 120,
+    "date": "2025-09-21"
+  },
+  {
+    "description_original": "Vegetable market",
+    "description_processed": "vegetables purchase",
+    "category": "Groceries",
+    "amount": 360,
+    "date": "2025-09-22"
+  },
+  {
+    "description_original": "Zomato lunch",
+    "description_processed": "restaurant food order",
+    "category": "Food & drinks",
+    "amount": 310,
+    "date": "2025-09-23"
+  },
+  {
+    "description_original": "Friend birthday gift",
+    "description_processed": "gift item",
+    "category": "Miscellaneous",
+    "amount": 500,
+    "date": "2025-09-24"
+  },
+  {
+    "description_original": "Bus pass recharge",
+    "description_processed": "bus commute payment",
+    "category": "Commute",
+    "amount": 450,
+    "date": "2025-09-25"
+  },
+  {
+    "description_original": "mobile recharge",
+    "description_processed": "mobile recharge",
+    "category": "Bills & utilities",
+    "amount": 199,
+    "date": "2025-10-02"
+  },
+  {
+    "description_original": "petrol bharwaya",
+    "description_processed": "fuel refill",
+    "category": "Fuel",
+    "amount": 800,
+    "date": "2025-10-03"
+  },
+  {
+    "description_original": "chai nashta",
+    "description_processed": "tea and snacks",
+    "category": "Food & drinks",
+    "amount": 70,
+    "date": "2025-10-03"
+  },
+  {
+    "description_original": "sabzi",
+    "description_processed": "vegetables",
+    "category": "Groceries",
+    "amount": 120,
+    "date": "2025-10-04"
+  },
+  {
+    "description_original": "doctor fees",
+    "description_processed": "doctor consultation",
+    "category": "Medical",
+    "amount": 500,
+    "date": "2025-10-05"
+  },
+  {
+    "description_original": "medicines",
+    "description_processed": "pharmacy purchase",
+    "category": "Medical",
+    "amount": 320,
+    "date": "2025-10-05"
+  },
+  {
+    "description_original": "sabun shampoo",
+    "description_processed": "soap and shampoo",
+    "category": "Personal care",
+    "amount": 180,
+    "date": "2025-10-06"
+  },
+  {
+    "description_original": "auto fare",
+    "description_processed": "auto rickshaw fare",
+    "category": "Commute",
+    "amount": 60,
+    "date": "2025-10-06"
+  },
+  {
+    "description_original": "vegetable market",
+    "description_processed": "vegetable shopping",
+    "category": "Groceries",
+    "amount": 150,
+    "date": "2025-10-07"
+  },
+  {
+    "description_original": "milk and bread",
+    "description_processed": "milk and bread",
+    "category": "Groceries",
+    "amount": 90,
+    "date": "2025-10-07"
+  },
+  {
+    "description_original": "movie ticket",
+    "description_processed": "movie ticket",
+    "category": "Entertainment",
+    "amount": 300,
+    "date": "2025-10-07"
+  },
+  {
+    "description_original": "vegetable bhaji",
+    "description_processed": "vegetables",
+    "category": "Groceries",
+    "amount": 130,
+    "date": "2025-10-08"
+  },
+  {
+    "description_original": "snacks packet",
+    "description_processed": "chips and snacks",
+    "category": "Food & drinks",
+    "amount": 60,
+    "date": "2025-10-08"
+  }
+]
