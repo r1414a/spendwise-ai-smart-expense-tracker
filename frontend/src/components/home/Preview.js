@@ -1,4 +1,6 @@
+import AnimatedSectionBlock from "../ui/AnimateSectionBlock";
 import Heading from "../ui/Heading";
+import SectionPara from "../ui/SectionPara";
 
 const PREVIEW = [
   {
@@ -17,24 +19,25 @@ const PREVIEW = [
 
 export default function Preview() {
   return (
-    <section className="bg-lightblue py-32">
+    <section className="bg-lightblue py-32 px-4">
       <div className="max-w-screen-xl mx-auto">
+        <AnimatedSectionBlock>
         <Heading
-          css="text-center"
+          css="text-start md:text-center"
           heading="See Your Finances Clearly"
         />
-        <p className="mt-2.5 text-myborder/70 text-lg text-center max-w-lg mx-auto">
-          Get a complete overview of your daily spending and long-term progress,
-          powered by AI insights.
-        </p>
-        <div className="mt-16">
-            <ul className="flex justify-between space-y-3">
+        <SectionPara text="Get a complete overview of your daily spending and long-term progress,
+          powered by AI insights." css="max-w-lg md:mx-auto"/>
+      
+        </AnimatedSectionBlock>
+        <div className="mt-12 md:mt-16">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 md:justify-items-center md:gap-6">
               {PREVIEW.map((item) => (
                 <li key={item.t}>
                   <span className="text-lightred font-semibold text-xl underline underline-offset-6">
                     {item.t}
                   </span>
-                  <p className="mt-1 text-myborder/70  max-w-xs">{item.c}</p>
+                  <p className="mt-2 md:mt-1 text-myborder/70  max-w-xs">{item.c}</p>
                 </li>
               ))}
             </ul>

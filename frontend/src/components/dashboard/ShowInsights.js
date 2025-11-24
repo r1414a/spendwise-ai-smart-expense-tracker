@@ -34,7 +34,7 @@ const insights = [
 
 export default function ShowInsights() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const settings = {
+   const settings = {
     className: "center",
     centerMode: true,
     infinite: true,
@@ -46,12 +46,24 @@ export default function ShowInsights() {
     beforeChange: (current, next) => setActiveIndex(next),
     responsive: [
       {
-        breakpoint: 1024,
-        settings: { slidesToShow: 2, centerPadding: "40px" },
+        breakpoint: 1536, // 2xl
+        settings: { slidesToShow: 3, centerPadding: "40px" },
       },
       {
-        breakpoint: 640,
+        breakpoint: 1280, // xl
+        settings: { slidesToShow: 3, centerPadding: "30px" },
+      },
+      {
+        breakpoint: 1024, // lg
+        settings: { slidesToShow: 2, centerPadding: "20px" },
+      },
+      {
+        breakpoint: 768, // md
         settings: { slidesToShow: 1, centerPadding: "20px" },
+      },
+      {
+        breakpoint: 640, // sm
+        settings: { slidesToShow: 1, centerPadding: "10px" },
       },
     ],
   };

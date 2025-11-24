@@ -104,7 +104,7 @@ export default function AddExpenseInput({ selectedDate, mutateExpenses }) {
         <button
           type="submit"
           disabled={!expenseDetails.description || expenseDetails.amount === 0}
-          className="bg-lightred hover:bg-boxbg text-mywhite font-medium rounded-md text-sm px-4 py-2.5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-80 disabled:hover:bg-lightred"
+          className="bg-lightred hover:bg-mywhite text-mywhite hover:text-gray font-medium rounded-md text-sm px-4 py-2.5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-80 disabled:hover:bg-lightred"
         >
           {isMutating ? "Adding" : "Add"}
         </button>

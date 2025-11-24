@@ -50,9 +50,9 @@ export default function ShowAndAddExpenseWrapper({ singleDateExpense }) {
       {/* <div className="flex justify-between  max-w-screen-xl mx-auto">
         
       </div> */}
-      <div className="relative bg-darkblue py-16 z-0 min-h-[80vh]">
-        <div className="max-w-screen-xl mx-auto flex gap-4">
-          <div className="basis-2/3 ">
+      <div className="relative bg-darkblue py-16 z-0 min-h-[80vh] px-4 md:px-10">
+        <div className="max-w-screen-xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-4">
+          <div className="order-2 md:order-1 basis-2/3 ">
             <DatesForSelection
               handleDateClick={handleDateClick}
               selectedDateInString={selectedDate.string}
@@ -64,7 +64,7 @@ export default function ShowAndAddExpenseWrapper({ singleDateExpense }) {
             {/* )} */}
           </div>
 
-          <div className="basis-1/3">
+          <div className="order-1 md:order-2 basis-1/3">
             <AddExpenseInput selectedDate={selectedDate} mutateExpenses={mutate}/>
           </div>
         </div>

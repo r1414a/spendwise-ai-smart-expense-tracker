@@ -11,7 +11,7 @@ export default function Calendar({handleDateClick}) {
   return (
     <>
       <div className="relative max-w-sm">
-        <div className="absolute right-3.5 top-3.5 flex items-center pointer-events-none">
+        <div className="absolute right-3 md:right-3.5 top-3 md:top-3.5 flex items-center pointer-events-none">
           <svg
             className="w-4 h-4 text-gray"
             aria-hidden="true"
@@ -26,7 +26,7 @@ export default function Calendar({handleDateClick}) {
           id="default-datepicker"
           type="date"
           onChange={(e) => handleDateClick(e.target.valueAsDate)}
-          className="bg-lightblue border border-lightgray/40 text-gray text-sm rounded-md block w-36  p-3 placeholder:text-gray cursor-pointer"
+          className="bg-lightblue border border-lightgray/40 text-gray text-sm rounded-md block w-36 p-2.5 md:p-3 placeholder:text-gray cursor-pointer"
           placeholder="Select date"
           min={minimum}
           max={maximum}

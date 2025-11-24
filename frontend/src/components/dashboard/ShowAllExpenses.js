@@ -19,7 +19,7 @@ export default function ShowAllExpenses({ singleDateExpense }) {
         singleDateExpense.length === 0
         ?
         (
-          <div className="mt-10 p-4 rounded-xl max-w-md bg-white/20 backdrop-blur-sm ring-1 ring-lightgray/60 ">
+          <div className="mt-10 p-3 md:p-4 rounded-xl max-w-md bg-white/20 backdrop-blur-sm ring-1 ring-lightgray/60 ">
            <p className="text-center text-white">No expense on this day.</p>
            </div>
         )
@@ -27,7 +27,7 @@ export default function ShowAllExpenses({ singleDateExpense }) {
         (
            <div className="mt-10 relative z-10 flex flex-wrap gap-4 mx-auto">
         {singleDateExpense.map((expense) => (
-          <div key={expense._id} className="p-4 rounded-xl min-w-sm bg-white/20 backdrop-blur-sm ring-1 ring-lightgray/60 ">
+          <div key={expense._id} className="p-4 rounded-xl w-sm md:max-w-md bg-white/20 backdrop-blur-sm ring-1 ring-lightgray/60 ">
             <div className="space-y-3">
               <div className="flex gap-4 items-center">
               <h1 className="text-mywhite text-xl font-semibold">
@@ -38,14 +38,14 @@ export default function ShowAllExpenses({ singleDateExpense }) {
               </h3>
               </div>
               <div className="space-y-1">
-                <p className="text-mywhite flex gap-2 text-sm items-center">
+                <p className="text-mywhite flex flex-col md:flex-row gap-1 md:gap-2 text-sm items-start md:items-center">
                   <span className="flex gap-2 items-center text-lightgray">
                     <FaPerson />
                     original description:{" "}
                   </span>
                   {expense.description_original}
                 </p>
-                <p className="text-mywhite flex gap-2 text-sm items-center">
+                <p className="mt-4 md:mt-0 text-mywhite flex flex-col md:flex-row gap-1 md:gap-2 text-sm items-start md:items-center">
                   <span className="flex gap-2 items-center text-lightgray">
                     <FaRobot />
                     processed description:{" "}

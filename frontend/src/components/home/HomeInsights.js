@@ -3,6 +3,8 @@ import { FaChartPie } from "react-icons/fa";
 import { IoBarChartSharp } from "react-icons/io5";
 import { BiLineChart } from "react-icons/bi";
 import { MdStackedBarChart } from "react-icons/md";
+import AnimatedSectionBlock from "../ui/AnimateSectionBlock";
+import SectionPara from "../ui/SectionPara";
 
 const CHARTS = [
   {
@@ -33,17 +35,17 @@ const CHARTS = [
 
 export default function HomeInsights() {
   return (
-    <section className="bg-white py-32">
+    <section className="bg-white py-32 px-4 sm:px-6">
       <div className="max-w-screen-xl mx-auto">
-        <Heading css="text-center" heading="Visualize. Understand. Improve." />
-        <p className="mt-2.5 text-myborder/70 text-lg text-center max-w-2xl mx-auto">
-          Turn your spending data into meaningful insights. See daily, weekly,
+        <AnimatedSectionBlock>
+        <Heading css="text-start md:text-center" heading="Visualize. Understand. Improve." />
+        <SectionPara text="Turn your spending data into meaningful insights. See daily, weekly,
           monthly, and category-wise trends at a glance, and make smarter
-          financial decisions.
-        </p>
-        <div className="mt-16 flex gap-10">
+          financial decisions." css="w-full md:max-w-2xl mx-0"/>
+        </AnimatedSectionBlock>
+        <div className="mt-10 md:mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 md:gap-6 lg:gap-4 xl:gap-6">
           {CHARTS.map((chart, i) => (
-            <div key={i}>
+            <div key={i} className="space-y-4 md:space-y-0">
                 <h3 className="font-semibold text-lg underline underline-offset-7 text-lightred">
                   {chart.t}
                 </h3>

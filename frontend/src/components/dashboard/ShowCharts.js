@@ -16,7 +16,7 @@ import {
 } from "recharts";
 import BarCustomTooltip from "./BarCustomTooltip";
 import ChartDesc from "./ChartDesc";
-
+import { useEffect, useState } from "react";
 
 const data = {
   result: {
@@ -178,147 +178,147 @@ const data = {
     ],
     weeklySpendByCategory: [
       {
-        "_id": 40,
-        "categories": [
+        _id: 40,
+        categories: [
           {
-            "category": "Medical",
-            "total": 820
+            category: "Medical",
+            total: 820,
           },
           {
-            "category": "Fuel",
-            "total": 800
+            category: "Fuel",
+            total: 800,
           },
           {
-            "category": "Food & drinks",
-            "total": 70
+            category: "Food & drinks",
+            total: 70,
           },
           {
-            "category": "Bills & utilities",
-            "total": 199
+            category: "Bills & utilities",
+            total: 199,
           },
           {
-            "category": "Groceries",
-            "total": 120
-          }
+            category: "Groceries",
+            total: 120,
+          },
         ],
-        "weekTotal": 2009
+        weekTotal: 2009,
       },
       {
-        "_id": 41,
-        "categories": [
+        _id: 41,
+        categories: [
           {
-            "category": "Commute",
-            "total": 140
+            category: "Commute",
+            total: 140,
           },
           {
-            "category": "Fuel",
-            "total": 700
+            category: "Fuel",
+            total: 700,
           },
           {
-            "category": "Charity",
-            "total": 100
+            category: "Charity",
+            total: 100,
           },
           {
-            "category": "Groceries",
-            "total": 730
+            category: "Groceries",
+            total: 730,
           },
           {
-            "category": "Entertainment",
-            "total": 300
+            category: "Entertainment",
+            total: 300,
           },
           {
-            "category": "Personal care",
-            "total": 180
+            category: "Personal care",
+            total: 180,
           },
           {
-            "category": "Food & drinks",
-            "total": 495
+            category: "Food & drinks",
+            total: 495,
           },
           {
-            "category": "Bills & utilities",
-            "total": 1450
-          }
+            category: "Bills & utilities",
+            total: 1450,
+          },
         ],
-        "weekTotal": 4095
+        weekTotal: 4095,
       },
       {
-        "_id": 42,
-        "categories": [
+        _id: 42,
+        categories: [
           {
-            "category": "Bills & utilities",
-            "total": 249
+            category: "Bills & utilities",
+            total: 249,
           },
           {
-            "category": "Entertainment",
-            "total": 600
+            category: "Entertainment",
+            total: 600,
           },
           {
-            "category": "Groceries",
-            "total": 280
+            category: "Groceries",
+            total: 280,
           },
           {
-            "category": "Food & drinks",
-            "total": 890
+            category: "Food & drinks",
+            total: 890,
           },
           {
-            "category": "Fitness",
-            "total": 900
+            category: "Fitness",
+            total: 900,
           },
           {
-            "category": "Medical",
-            "total": 95
+            category: "Medical",
+            total: 95,
           },
           {
-            "category": "Commute",
-            "total": 450
-          }
+            category: "Commute",
+            total: 450,
+          },
         ],
-        "weekTotal": 3464
+        weekTotal: 3464,
       },
       {
-        "_id": 43,
-        "categories": [
+        _id: 43,
+        categories: [
           {
-            "category": "Food & drinks",
-            "total": 365
+            category: "Food & drinks",
+            total: 365,
           },
           {
-            "category": "ATM",
-            "total": 2000
+            category: "ATM",
+            total: 2000,
           },
           {
-            "category": "Family & pets",
-            "total": 199
+            category: "Family & pets",
+            total: 199,
           },
           {
-            "category": "Groceries",
-            "total": 50
+            category: "Groceries",
+            total: 50,
           },
           {
-            "category": "Fuel",
-            "total": 1800
+            category: "Fuel",
+            total: 1800,
           },
           {
-            "category": "Education",
-            "total": 2500
+            category: "Education",
+            total: 2500,
           },
           {
-            "category": "Household",
-            "total": 310
-          }
+            category: "Household",
+            total: 310,
+          },
         ],
-        "weekTotal": 7224
+        weekTotal: 7224,
       },
       {
-        "_id": 44,
-        "categories": [
+        _id: 44,
+        categories: [
           {
-            "category": "Bills & utilities",
-            "total": 1150
-          }
+            category: "Bills & utilities",
+            total: 1150,
+          },
         ],
-        "weekTotal": 1150
-      }
+        weekTotal: 1150,
+      },
     ],
     monthlyTrend: [
       {
@@ -339,29 +339,54 @@ const data = {
 };
 
 // const COLORS = ["#0088FE", "#00C49F", "#FFBB28"];
-const COLORS = ["#111827", "#f02d5e", "#222222", "#5A5A5A", "#171918", "#343835", "#4B5563", "#9B59B6"];
-
-export default function ShowCharts({chartData}) {
-
-  const weeklySpendByCategoryDataTransformed = chartData.weeklySpendByCategory.map((data, index) => {
-  const obj = { week: `Week ${index + 1}`};
-
-  data.categories.forEach((c) => {
-    obj[c.category] = c.total;
-  })
-
-  return obj;
-})
-
-const categories = [
-  ...new Set(chartData.weeklySpendByCategory.flatMap((week) => week.categories.map((c) => c.category)))
+const COLORS = [
+  "#111827",
+  "#f02d5e",
+  "#222222",
+  "#5A5A5A",
+  "#171918",
+  "#343835",
+  "#4B5563",
+  "#9B59B6",
 ];
+
+export default function ShowCharts({ chartData }) {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const getWidth = () => {
+      setIsMobile(window.innerWidth < 767)
+    }
+    window.addEventListener("resize", getWidth);
+
+    return () => {
+      window.removeEventListener("resize", getWidth)
+    }
+  },[]);
+
+  const weeklySpendByCategoryDataTransformed =
+    chartData.weeklySpendByCategory.map((data, index) => {
+      const obj = { week: `Week ${index + 1}` };
+
+      data.categories.forEach((c) => {
+        obj[c.category] = c.total;
+      });
+
+      return obj;
+    });
+
+  const categories = [
+    ...new Set(
+      chartData.weeklySpendByCategory.flatMap((week) =>
+        week.categories.map((c) => c.category)
+      )
+    ),
+  ];
 
   return (
     <section className="bg-lightblue min-h-screen">
-      <div className="max-w-[95vw] mx-auto py-32">
-        <div className="flex">
-          <div className="basis-1/2">
+      <div className="w-full md:max-w-[95vw] mx-auto py-32">
+        <div className="flex flex-col lg:flex-row gap-20 md:gap-0">
+          <div className="basis-full lg:basis-1/2">
             <ResponsiveContainer width="100%" height={450}>
               <BarChart
                 data={chartData.dailySpend}
@@ -392,54 +417,65 @@ const categories = [
                 {/* <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#BABABA', fontSize: "12px" }} /> */}
                 <Tooltip content={<BarCustomTooltip />} />
                 <Bar dataKey="total" fill="#f02d5e" barSize={30}>
-                  {
-                    chartData.dailySpend.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]}/>
-                    ))
-                  }
+                  {chartData.dailySpend.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
 
-            <ChartDesc desc="This chart shows your total spending for each day of the current month, helping you track and manage daily expenses at a glance."/>
+            <ChartDesc desc="This chart shows your total spending for each day of the current month, helping you track and manage daily expenses at a glance." />
           </div>
-          <div className="basis-1/2">
-            <ResponsiveContainer width="100%" height={450}>
+          <div className="basis-full lg:basis-1/2">
+            <ResponsiveContainer
+              width="100%"
+              height={isMobile ? 300 : 450}
+            >
               <PieChart>
                 <Pie
                   activeShape={{
-                    fill: "#cccccc"
+                    fill: "#cccccc",
                   }}
                   data={chartData.categorySpend}
                   dataKey="total"
                   nameKey="_id"
                   cx="50%"
                   cy="50%"
-                  label={({name, value}) => `₹${value}`}
+                  label={({ name, value }) => `₹${value}`}
                 >
-                  {
-                    chartData.categorySpend.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]}/>
-                    ))
-                  }
+                  {chartData.categorySpend.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
                 </Pie>
-                <Tooltip formatter={(name,value) => [`₹${name}`, `${value}`]} wrapperStyle={{ backgroundColor: '#BABABA', fontSize: "12px"}}/>
+                <Tooltip
+                  formatter={(name, value) => [`₹${name}`, `${value}`]}
+                  wrapperStyle={{
+                    backgroundColor: "#BABABA",
+                    fontSize: "12px",
+                  }}
+                />
               </PieChart>
             </ResponsiveContainer>
 
-            <ChartDesc desc="This chart shows how much you’ve spent in each category this month, helping you see where most of your money goes."/>
+            <ChartDesc desc="This chart shows how much you’ve spent in each category this month, helping you see where most of your money goes." />
           </div>
         </div>
 
-
-        <div className="flex mt-20">
-          <div className="basis-1/2">
+        <div className="flex flex-col lg:flex-row gap-20 md:gap-0 mt-20">
+          <div className="basis-full lg:basis-1/2">
             <ResponsiveContainer width="100%" height={450}>
-                <BarChart data={weeklySpendByCategoryDataTransformed}
+              <BarChart
+                data={weeklySpendByCategoryDataTransformed}
                 margin={{ top: 0, right: 0, left: 10, bottom: 30 }}
-                >
-                   <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey={"week"} stroke="#111827" fontSize={12}>
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey={"week"} stroke="#111827" fontSize={12}>
                   <Label
                     value="Current Month Weeks"
                     offset={-10}
@@ -460,29 +496,42 @@ const categories = [
                     fill="#f02d5e"
                   />
                 </YAxis>
-                <Tooltip formatter={(name,value) => [`₹${name}`,`${value}`]} wrapperStyle={{ backgroundColor: '#BABABA', fontSize: "12px"}}/>
-                {
-                  categories.map((cat, idx) => (
-                    <Bar
-                      key={cat}
-                      dataKey={cat}
-                      stackId="a"
-                      fill={COLORS[idx % COLORS.length]}
-                    />
-                  ))
-                }
-                
-                </BarChart>
+                <Tooltip
+                  formatter={(name, value) => [`₹${name}`, `${value}`]}
+                  wrapperStyle={{
+                    backgroundColor: "#BABABA",
+                    fontSize: "12px",
+                  }}
+                />
+                {categories.map((cat, idx) => (
+                  <Bar
+                    key={cat}
+                    dataKey={cat}
+                    stackId="a"
+                    fill={COLORS[idx % COLORS.length]}
+                  />
+                ))}
+              </BarChart>
             </ResponsiveContainer>
 
-            <ChartDesc desc="This chart shows your weekly spending across different categories for the month.
-It helps you see where most of your money went and how your habits changed each week."/>
+            <ChartDesc
+              desc="This chart shows your weekly spending across different categories for the month.
+It helps you see where most of your money went and how your habits changed each week."
+            />
           </div>
-          <div className="basis-1/2">
+          <div className="basis-full lg:basis-1/2">
             <ResponsiveContainer width="100%" height={450}>
-              <LineChart data={chartData.monthlyTrend} margin={{ top: 0, right: 0, left: 10, bottom: 30 }}>
+              <LineChart
+                data={chartData.monthlyTrend}
+                margin={{ top: 0, right: 0, left: 10, bottom: 30 }}
+              >
                 <CartesianGrid strokeDasharray="3 3" />
-                <Line type="monotone" dataKey="total" stroke="#f02d5e" strokeWidth={2}/>
+                <Line
+                  type="monotone"
+                  dataKey="total"
+                  stroke="#f02d5e"
+                  strokeWidth={2}
+                />
                 <XAxis dataKey="month" stroke="#111827" fontSize={12}>
                   <Label
                     value="Months"
@@ -504,11 +553,17 @@ It helps you see where most of your money went and how your habits changed each 
                     fill="#f02d5e"
                   />
                 </YAxis>
-                <Tooltip formatter={(name,value) => [`₹${name}`,`${value}`]} wrapperStyle={{ backgroundColor: '#BABABA', fontSize: "12px"}}/>
+                <Tooltip
+                  formatter={(name, value) => [`₹${name}`, `${value}`]}
+                  wrapperStyle={{
+                    backgroundColor: "#BABABA",
+                    fontSize: "12px",
+                  }}
+                />
               </LineChart>
             </ResponsiveContainer>
 
-            <ChartDesc desc="This chart shows your total spending for each month, helping you track how your expenses change over time and identify months where you spent more or saved better."/>
+            <ChartDesc desc="This chart shows your total spending for each month, helping you track how your expenses change over time and identify months where you spent more or saved better." />
           </div>
         </div>
       </div>
