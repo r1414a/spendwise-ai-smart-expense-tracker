@@ -69,7 +69,7 @@ export default function ShowInsights() {
   };
   return (
     <div className="relative bg-white pt-32 pb-44 z-0">
-      <div className="max-w-screen-xl mx-auto">
+      <div className="w-full">
         <Slider {...settings} className="slider-container">
           {insights.map((insight, i) => (
             <div key={i} className="px-2 py-3">
