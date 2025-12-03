@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import FilesCarousel from "../filecarousel/FilesCarousel";
+// import FilesCarousel from "../filecarousel/FilesCarousel";
 import { FaUpload } from "react-icons/fa6";
 import { FaCamera } from "react-icons/fa";
 
@@ -105,7 +105,8 @@ export default function UploadMedia({
               />
             )
           ) : (
-            <FilesCarousel files={uploadedFiles} height="h-56" />
+            null
+            // <FilesCarousel files={uploadedFiles} height="h-56" />
           )}
         </div>
       )}
