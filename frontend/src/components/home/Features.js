@@ -1,5 +1,6 @@
 import AnimatedSectionBlock from "../ui/AnimateSectionBlock";
 import Heading from "../ui/Heading";
+import CreatePost from "./CreatePost";
 
 const FEATURES = [
     {
@@ -27,6 +28,7 @@ const FEATURES = [
 export  default function Features(){
     return(
         <section className="relative py-32 bg-white px-4">
+            <CreatePost/>
             <div className="max-w-screen-xl mx-auto">
                 <div className="absolute right-44 top-44 w-96 h-96 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-25 blur-3xl"></div>
                 <AnimatedSectionBlock>
