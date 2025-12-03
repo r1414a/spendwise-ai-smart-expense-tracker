@@ -118,7 +118,7 @@ export default function CreatePost() {
   return (
     <>
       <form
-        onSubmit={handleSubmit}
+        // onSubmit={handleSubmit}
         className="pt-20 pb-18 mb-20 px-4 xs:px-6 bg-white text-graybg"
       >
         {/* <div>
