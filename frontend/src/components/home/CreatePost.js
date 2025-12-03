@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
+import UploadMedia from "./UploadMedia";
 // import axios from "axios";
 // import { useAuth } from "@/context/authContext";
 // import SearchLocation from "../ui/SearchLocation";
 // import ErrorOrSuccessToast from "../ui/ErrorOrSuccessToast";
-import UploadMedia from "../ui/createpost-group/UploadMedia";
 // import DistanceAndVisibility from "../ui/createpost-group/DistanceAndVisibility";
 // import TextArea from "../ui/textarea/TextArea";
 // import FormSubmitButton from "../ui/formsubmitbutton/FormSubmitButton";
