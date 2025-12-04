@@ -119,7 +119,7 @@ export default function CreatePost() {
     <>
       <form
         // onSubmit={handleSubmit}
-        className="pt-20 pb-18 mb-20 px-4 xs:px-6 bg-white text-graybg"
+        className="pt-20 pb-18 mb-20 px-4 xs:px-6 bg-white text-graybg z-[9999]"
       >
         {/* <div>
           <h2 className="text-2xl font-bold text-graybg tracking-tight pb-4">
