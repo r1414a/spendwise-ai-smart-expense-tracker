@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 // import FilesCarousel from "../filecarousel/FilesCarousel";
 import { FaUpload } from "react-icons/fa6";
 import { FaCamera } from "react-icons/fa";
@@ -12,6 +12,9 @@ export default function UploadMedia({
   uploadedFiles,
   setUploadedFiles,
 }) {
+
+  const fileInputRef = useRef(null);
+
   function showPreview(e) {
     const files = Array.from(e.target.files);
 
@@ -37,6 +40,29 @@ export default function UploadMedia({
       <label className="block text-sm font-semibold mb-2 text-graybg">
         Upload Images/Videos {isInCreatePost && "(Optional)"}
       </label>
+      <div
+      onClick={() => fileInputRef.current.click()}
+        className="w-full h-56 border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center cursor-pointer hover:border-gray-600 transition relative overflow-hidden"
+      >
+      
+            <FaCamera className="text-3xl text-gray-400 mb-2" />
+            <p className="text-sm text-gray-500">
+              Tap to select photo or video
+            </p>
+
+            <input
+          ref={fileInputRef}
+          type="file"
+          multiple={!isSingleImage}
+          accept="image/*,video/*"
+          capture="environment"
+          onChange={(e) => {
+            showPreview(e);
+            onImageChange(e);
+          }}
+          className="hidden"
+        />
+      </div>
       <div className="flex gap-2">
         <div className="basis-1/2 border border-gray-300 rounded-md relative p-2.5 hover:border-gray-600">
           <input
