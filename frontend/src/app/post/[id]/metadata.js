@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: data.title,
       description: data.content.substring(0, 160),
-      url: `${process.env.NEXT_PUBLIC_API_URL}/post/${params.id}`,
+      url: `https://spendwise-azure.vercel.app/post/${params.id}`,
       type: "article",
       images: [
         {

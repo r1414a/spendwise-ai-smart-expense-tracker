@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
     <Hero/>
-    <ReactShare shareUrl={`${process.env.API_URL}/post/68b1b58d800decc444e948c5`} title="this is react share title"/>
+    <ReactShare shareUrl={`https://spendwise-azure.vercel.app/post/68b1b58d800decc444e948c5`} title="this is react share title"/>
     <Features/>
     <Preview/>
     <HomeInsights/>
