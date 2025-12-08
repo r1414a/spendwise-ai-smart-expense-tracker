@@ -16,6 +16,11 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "SpendWise",
   description: "AI Smart Expense Tracker",
+  openGraph: {
+    title: "",
+    description: "",
+    images: [],   // 🚨 IMPORTANT: prevents default site logo being used
+  },
   icons: {
     icon: [
       { url: "/favicon_io/favicon-32x32.png", sizes: "32x32", type: "image/png" },
