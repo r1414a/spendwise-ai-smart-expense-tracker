@@ -364,7 +364,7 @@ export default function ShowCharts({ chartData }) {
   },[]);
 
   const weeklySpendByCategoryDataTransformed =
-    chartData.weeklySpendByCategory.map((data, index) => {
+    chartData?.weeklySpendByCategory.map((data, index) => {
       const obj = { week: `Week ${index + 1}` };
 
       data.categories.forEach((c) => {
@@ -376,7 +376,7 @@ export default function ShowCharts({ chartData }) {
 
   const categories = [
     ...new Set(
-      chartData.weeklySpendByCategory.flatMap((week) =>
+      chartData?.weeklySpendByCategory.flatMap((week) =>
         week.categories.map((c) => c.category)
       )
     ),
@@ -389,7 +389,7 @@ export default function ShowCharts({ chartData }) {
           <div className="basis-full lg:basis-1/2">
             <ResponsiveContainer width="100%" height={450}>
               <BarChart
-                data={chartData.dailySpend}
+                data={chartData?.dailySpend}
                 margin={{ top: 0, right: 0, left: 10, bottom: 30 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
@@ -417,7 +417,7 @@ export default function ShowCharts({ chartData }) {
                 {/* <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#BABABA', fontSize: "12px" }} /> */}
                 <Tooltip content={<BarCustomTooltip />} />
                 <Bar dataKey="total" fill="#f02d5e" barSize={30}>
-                  {chartData.dailySpend.map((entry, index) => (
+                  {chartData?.dailySpend.map((entry, index) => (
                     <Cell
                       key={`cell-${index}`}
                       fill={COLORS[index % COLORS.length]}
@@ -439,14 +439,14 @@ export default function ShowCharts({ chartData }) {
                   activeShape={{
                     fill: "#cccccc",
                   }}
-                  data={chartData.categorySpend}
+                  data={chartData?.categorySpend}
                   dataKey="total"
                   nameKey="_id"
                   cx="50%"
                   cy="50%"
                   label={({ name, value }) => `₹${value}`}
                 >
-                  {chartData.categorySpend.map((entry, index) => (
+                  {chartData?.categorySpend.map((entry, index) => (
                     <Cell
                       key={`cell-${index}`}
                       fill={COLORS[index % COLORS.length]}
@@ -522,7 +522,7 @@ It helps you see where most of your money went and how your habits changed each 
           <div className="basis-full lg:basis-1/2">
             <ResponsiveContainer width="100%" height={450}>
               <LineChart
-                data={chartData.monthlyTrend}
+                data={chartData?.monthlyTrend}
                 margin={{ top: 0, right: 0, left: 10, bottom: 30 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />

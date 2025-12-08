@@ -2,21 +2,21 @@ import { useState } from "react";
 import InputHelperText from "./InputHelperText";
 import useSWRMutation from "swr/mutation";
 
-const addExpense = async(url,{arg}) => {
-  const {description_original, amount, date} = arg;
-  
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${url}`,{
+const addExpense = async (url, { arg }) => {
+  const { description_original, amount, date } = arg;
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${url}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ expenseDetails: {description_original,amount,date} }),
+    body: JSON.stringify({ expenseDetails: { description_original, amount, date } }),
   })
   const data = await res.json();
   return data.result;
 }
 
-export default function AddExpenseInput({ selectedDate, mutateExpenses }) {
+export default function AddExpenseInput({ selectedDate, setExpenses, mutateBefore }) {
   const [expenseDetails, setExpenseDetails] = useState({
     description: "",
     amount: 0,
@@ -26,23 +26,27 @@ export default function AddExpenseInput({ selectedDate, mutateExpenses }) {
     trigger,
     isMutating,
     error
-  } = useSWRMutation("/api/expense/create",addExpense)
-  
+  } = useSWRMutation("/api/expense/create", addExpense)
 
-  async function handleAddClick(e){
+
+  async function handleAddClick(e) {
     e.preventDefault();
-    try{
+    try {
       const res = await trigger({
-        description_original: expenseDetails.description, 
-        amount: expenseDetails.amount, 
+        description_original: expenseDetails.description,
+        amount: expenseDetails.amount,
         date: selectedDate.iso
       })
       console.log("result", res);
 
-      mutateExpenses();
+      if (selectedDate.from === "before") {
+        mutateBefore();
+      } else {
+        setExpenses((prev) => ({...prev, res}));
+      }
 
       setExpenseDetails({ description: "", amount: "" });
-    }catch(err){
+    } catch (err) {
       console.log("Error while adding expense: ", err);
     }
   }

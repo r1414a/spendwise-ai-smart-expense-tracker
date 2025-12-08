@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import AddExpenseInput from "./AddExpenseInput";
 import DatesForSelection from "./DatesForSelection";
 import ShowAllExpenses from "./ShowAllExpenses";
@@ -19,32 +19,116 @@ const getExpenses = async ([url, date]) => {
   return data.result;
 };
 
-export default function ShowAndAddExpenseWrapper({ singleDateExpense }) {
+export default function ShowAndAddExpenseWrapper() {
+  const [expenses, setExpenses] = useState([]);
   const today = new Date();
-  // const [expenses, setExpenses] = useState(singleDateExpense);
-  const [selectedDate, setSelectedDate] = useState({
+  const [sevenDate, setSevenDate] = useState({
     iso: today.toISOString(),
     string: new Date(today).toISOString().split("T")[0],
   });
 
-  const { data, isLoading, mutate } = useSWR(
-    ["/api/expense/get-expense", selectedDate.iso],
+  const [beforeDate, setBeforeDate] = useState({
+    iso: "",
+    string: "",
+  });
+
+
+  // const todaycopy = new Date();
+  // const sevendaybeforedate = todaycopy.setDate(todaycopy.getDate() - 6);
+  // const sevendaybeforedatestart = new Date(sevendaybeforedate).setHours(0, 0, 0, 0);
+
+  // const isDateLessThanPastSevenDays = new Date(selectedDate.iso).getTime() < sevendaybeforedatestart
+
+  const key = !expenses.length ? ["/api/expense/get-expense", sevenDate.iso] : null;
+
+  const { data: pastSevenExpense, isLoading, mutate: mutateSeven } = useSWR(
+    key,
     getExpenses,
     {
-      fallbackData: singleDateExpense,
+      // fallbackData: singleDateExpense,
       revalidateOnFocus: false,
       revalidateOnReconnect: true
     }
   );
 
-  function handleDateClick(date) {
-    setSelectedDate({
+  const key2 = beforeDate.iso ? ["/api/expense/get-expense", beforeDate.iso] : null;
+  const {
+    data: beforeSevenExpense,
+    isLoading: beforeSevenLoading,
+    error: beforeSevenError,
+    mutate: mutateBefore
+  } = useSWR(
+    key2,
+    getExpenses,
+    {
+      // fallbackData: singleDateExpense,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: true
+    }
+  );
+
+
+  useEffect(() => {
+    if (!pastSevenExpense) return;
+
+    setExpenses(pastSevenExpense);
+  }, [pastSevenExpense]);
+
+  // new Date("2025-11-19T19:00:00.000Z")
+  const selectedDateExpense = useMemo(() => {
+    console.log("running memo", expenses, "before", beforeDate, "seven", sevenDate)
+
+    // if (isDateLessThanPastSevenDays) {
+    //   return beforeSevenExpense || [];
+    // }
+
+    // If recent data isn't loaded yet
+
+    if (beforeDate.iso) {
+      return beforeSevenExpense || [];
+    }
+
+    if (!expenses.length) return [];
+
+    const start = new Date(sevenDate.iso).setHours(0, 0, 0, 0);
+    const end = new Date(sevenDate.iso).setHours(23, 59, 59, 0)
+    console.log(start, end)
+
+    return expenses.filter((item) => {
+      const itemTime = new Date(item.date).getTime();
+      return itemTime >= start && itemTime <= end;
+    });
+  }, [expenses, sevenDate, beforeDate, beforeSevenExpense]);
+
+  function handleDateClick(e, date) {
+    const { name } = e.target;
+    console.log("clicked date", date, name);
+    if (name === "seven") {
+      if (beforeDate.iso) {
+        setBeforeDate({
+          iso: "", string: ""
+        })
+      }
+      setSevenDate({
+        iso: date.toISOString(),
+        string: new Date(date).toISOString().split("T")[0],
+      })
+      return;
+    }
+
+    if (sevenDate.iso) {
+      setSevenDate({
+        iso: "", string: ""
+      })
+    }
+    setBeforeDate({
       iso: date.toISOString(),
       string: new Date(date).toISOString().split("T")[0],
-    }); 
+    });
   }
 
-  console.log(data);
+  console.log("seven", sevenDate, "before", beforeDate, expenses, beforeSevenExpense, selectedDateExpense);
+
   return (
     <section>
       {/* <div className="flex justify-between  max-w-screen-xl mx-auto">
@@ -55,17 +139,24 @@ export default function ShowAndAddExpenseWrapper({ singleDateExpense }) {
           <div className="order-2 md:order-1 basis-2/3 ">
             <DatesForSelection
               handleDateClick={handleDateClick}
-              selectedDateInString={selectedDate.string}
+              sevenDateInString={sevenDate.string}
+              beforeDateInString={beforeDate.string}
             />
-            {/* {isLoading ? (
-              <p className="text-mywhite"->Loading...</p>
-            ) : ( */}
-              <ShowAllExpenses singleDateExpense={data || []} />
-            {/* )} */}
+
+            {
+              isLoading ? (<p className="text-white">Loading....</p>)
+                :
+                (
+                  <ShowAllExpenses singleDateExpense={selectedDateExpense || []} />
+                )
+            }
+
           </div>
 
           <div className="order-1 md:order-2 basis-1/3">
-            <AddExpenseInput selectedDate={selectedDate} mutateExpenses={mutate}/>
+            <AddExpenseInput selectedDate={beforeDate.iso ? { ...beforeDate, from: "before" } : { ...sevenDate, from: "seven" }}
+              setExpenses={setExpenses}
+              mutateBefore={mutateBefore} />
           </div>
         </div>
       </div>

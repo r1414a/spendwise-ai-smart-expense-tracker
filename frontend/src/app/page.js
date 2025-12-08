@@ -3,12 +3,14 @@ import Features from "@/components/home/Features";
 import Hero from "@/components/home/hero/Hero";
 import HomeInsights from "@/components/home/HomeInsights";
 import Preview from "@/components/home/Preview";
+import ReactShare from "@/components/ReactShare";
 
 export default function Home() {
  
   return (
     <>
     <Hero/>
+    <ReactShare shareUrl={`${process.env.API_URL}/post/68b1b58d800decc444e948c5`} title="this is react share title"/>
     <Features/>
     <Preview/>
     <HomeInsights/>

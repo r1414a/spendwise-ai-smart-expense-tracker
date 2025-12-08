@@ -1,14 +1,12 @@
-import { pastSeventDaysExpenseCacheMap } from "../cache/cache_data.js";
 import Expense from "../model/expense.model.js";
 import { categorizeExpenseLLM } from "../utils/categorizeExpenseLLM.js";
 import { generateSpendingInsights } from "../utils/generateSpendingInsights.js";
 import { previousMonthCategorySpendingMapping } from "../utils/previousMonthCategorySpendingMapping.js";
 
 
-// console.log(pastSeventDaysExpenseCacheMap)
 export const saveExpenses = async (req, res) => {
   const { description_original, amount, date } = req.body.expenseDetails;
-  console.log(description_original, amount, date);
+  console.log("adding expense: ",description_original, amount, date);
   try {
     if (!description_original.trim() || !amount || !date) {
       return res
@@ -17,7 +15,7 @@ export const saveExpenses = async (req, res) => {
     }
 
     const modelResponse = await categorizeExpenseLLM(description_original);
-    console.log(modelResponse);
+    // console.log(modelResponse);
 
     const newExpense = new Expense({
       date,
@@ -34,12 +32,12 @@ export const saveExpenses = async (req, res) => {
     }
 
     //updating cache when new expense gets added
-    const key = new Date(date).toISOString().split("T")[0];
-    if(pastSeventDaysExpenseCacheMap.has(key)){
-      pastSeventDaysExpenseCacheMap.get(key).unshift(result.toObject())
-    }else{
-      pastSeventDaysExpenseCacheMap.set(key, [result.toObject()])
-    }
+    // const key = new Date(date).toISOString().split("T")[0];
+    // if(pastSeventDaysExpenseCacheMap.has(key)){
+    //   pastSeventDaysExpenseCacheMap.get(key).unshift(result.toObject())
+    // }else{
+    //   pastSeventDaysExpenseCacheMap.set(key, [result.toObject()])
+    // }
 
     // console.log(pastSeventDaysExpenseCacheMap)
     res.status(201).json({result, message: "Expense saved."})
@@ -152,14 +150,14 @@ export const getExpenseForADate = async(req,res) => {
     // console.log(pastSeventDaysExpenseCacheMap.get(bodyDate));
 
     //check cache first if data present return
-    if(pastSeventDaysExpenseCacheMap.has(bodyDate)){
-      return res.status(200).json(
-        {
-          result: pastSeventDaysExpenseCacheMap.get(bodyDate),
-          message: `Found expense for ${bodyDate} date in cache.`
-        }
-      )
-    }
+    // if(pastSeventDaysExpenseCacheMap.has(bodyDate)){
+    //   return res.status(200).json(
+    //     {
+    //       result: pastSeventDaysExpenseCacheMap.get(bodyDate),
+    //       message: `Found expense for ${bodyDate} date in cache.`
+    //     }
+    //   )
+    // }
 
     console.log("bodyDate is less",new Date(date).getTime(),sevendaybeforedatestart);
     if(new Date(date).getTime() < sevendaybeforedatestart){
@@ -179,7 +177,7 @@ export const getExpenseForADate = async(req,res) => {
     }
 
     //clearing cache
-    pastSeventDaysExpenseCacheMap.clear();
+    // pastSeventDaysExpenseCacheMap.clear();
     //if not present in cache get expense from db.
     expenses = await Expense.find(
       {
@@ -189,26 +187,26 @@ export const getExpenseForADate = async(req,res) => {
         }
       }
     ).lean();
-    // console.log("Expenses", expenses);
+    console.log("Expenses", expenses);
 
     if(!expenses.length){
       return res.status(404).json({message: "No expenses found for past 7 days."});
     }
 
     //got expense from db now store the freshly fetched expense in cache
-    for(const e of expenses){
-      const key = new Date(e.date).toISOString().split("T")[0];
-      if(!pastSeventDaysExpenseCacheMap.has(key)){
-        pastSeventDaysExpenseCacheMap.set(key,[])
-      }
+    // for(const e of expenses){
+    //   const key = new Date(e.date).toISOString().split("T")[0];
+    //   if(!pastSeventDaysExpenseCacheMap.has(key)){
+    //     pastSeventDaysExpenseCacheMap.set(key,[])
+    //   }
 
-      pastSeventDaysExpenseCacheMap.get(key).push(e)
-    }
+    //   pastSeventDaysExpenseCacheMap.get(key).push(e)
+    // }
 
-    console.log(pastSeventDaysExpenseCacheMap);
+    // console.log(pastSeventDaysExpenseCacheMap);
     
-    const result = pastSeventDaysExpenseCacheMap.get(bodyDate);
-    res.status(200).json({result: result || [], message: "got all expenses from db."});
+    // const result = pastSeventDaysExpenseCacheMap.get(bodyDate);
+    res.status(200).json({result: expenses || [], message: "got all expenses from db."});
   }catch(err){
     console.log("Error in getExpenseForADate ", err);
     res.status(500).json({message: "Error while getting expense for a date."});

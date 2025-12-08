@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import {connectDB} from "./db/connectDB.js";
 import expenseRoutes from "./routes/expenses.route.js";
+import postRoutes from "./routes/posts.route.js";
 import cors from 'cors';
 
 connectDB();
@@ -20,6 +21,7 @@ app.use(cors({
 
 
 app.use("/api/expense", expenseRoutes);
+app.use("/api/post", postRoutes);
 
 app.get("/",(req,res) => {
     res.send("server running.");

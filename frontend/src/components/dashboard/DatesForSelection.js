@@ -4,7 +4,7 @@ import { memo, useMemo } from "react";
 import Calendar from "./Calendar";
 
 
-const DatesForSelection = ({ handleDateClick, selectedDateInString }) => {
+const DatesForSelection = ({ handleDateClick, sevenDateInString, beforeDateInString }) => {
   console.log("dateForSelection")
   const today = new Date();
   const last7Days = useMemo(() => {
@@ -25,10 +25,11 @@ const DatesForSelection = ({ handleDateClick, selectedDateInString }) => {
       <div className="flex gap-2 items-center">
         {last7Days.map((item, i) => (
           <button
+            name="seven"
             key={i}
-            onClick={() => handleDateClick(item, i)}
+            onClick={(e) => handleDateClick(e,item)}
             className={`${
-              new Date(item).toISOString().split("T")[0] == selectedDateInString
+              new Date(item).toISOString().split("T")[0] == sevenDateInString
                 ? "bg-lightred "
                 : "bg-lightblue text-gray outline outline-lightgray/40"
             } rounded-md py-2 md:py-2.5 px-3 md:px-4 cursor-pointer hover:bg-lightred hover:text-mywhite`}
@@ -37,7 +38,7 @@ const DatesForSelection = ({ handleDateClick, selectedDateInString }) => {
           </button>
         ))}
       </div>
-      <Calendar handleDateClick={handleDateClick} />
+      <Calendar handleDateClick={handleDateClick} beforeDateInString={beforeDateInString}/>
     </div>
   );
 }
