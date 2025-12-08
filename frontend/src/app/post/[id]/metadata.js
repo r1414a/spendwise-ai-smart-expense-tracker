@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export async function generateMetadata({ params }) {
    const res = await fetch(
     `${process.env.API_URL}/api/post/public/${params.id}`,
