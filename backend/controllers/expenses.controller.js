@@ -226,7 +226,7 @@ export const getCharts = async(req,res) => {
     const dailySpend = await Expense.aggregate([
       { $match: {date: { $gte: currentMonthStart, $lte: currentDayEnd}}},
       { $group: {
-        _id: { $dateToString: { format: "%d",date: "$date"}},
+        _id: { $dateToString: { format: "%d",date: "$date", timezone: "Asia/Kolkata"}},
         total: { $sum: "$amount"}
       }},
       { $sort: { "_id": 1}}

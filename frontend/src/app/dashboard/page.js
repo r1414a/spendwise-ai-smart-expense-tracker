@@ -14,22 +14,6 @@ export default async function Dashboard() {
   }
 
 
-
-  // const [getExpenseRes, chartDataRes] = await Promise.all([
-  //   fetch(`${process.env.API_URL}/api/expense/get-expense`,
-  //   {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify({date:today})
-  //   }
-  // ),
-  // fetch(`${process.env.API_URL}/api/expense/charts`)
-  // ]);
-
-  // const [getExpenseData, chartData] = await Promise.all([getExpenseRes.json(), chartDataRes.json()]);
-
   console.log(chartData);
   return (
     <main className="overflow-x-hidden">
@@ -37,7 +21,6 @@ export default async function Dashboard() {
 
       <CoreMetrics />
       
-      {/* <ShowAndAddExpenseWrapper singleDateExpense={getExpenseData.result}/> */}
       <ShowAndAddExpenseWrapper/>
 
       <ShowCharts chartData={chartData?.result}/>

@@ -5,6 +5,7 @@ import AddExpenseInput from "./AddExpenseInput";
 import DatesForSelection from "./DatesForSelection";
 import ShowAllExpenses from "./ShowAllExpenses";
 import useSWR from "swr";
+import ExpenseLoadingSkeleton from "./ExpenseLoadingSkeleton";
 
 const getExpenses = async ([url, date]) => {
   console.log("getEXPENSE", date);
@@ -76,13 +77,7 @@ export default function ShowAndAddExpenseWrapper() {
 
   // new Date("2025-11-19T19:00:00.000Z")
   const selectedDateExpense = useMemo(() => {
-    console.log("running memo", expenses, "before", beforeDate, "seven", sevenDate)
-
-    // if (isDateLessThanPastSevenDays) {
-    //   return beforeSevenExpense || [];
-    // }
-
-    // If recent data isn't loaded yet
+    console.log("running memo", expenses)
 
     if (beforeDate.iso) {
       return beforeSevenExpense || [];
@@ -127,7 +122,7 @@ export default function ShowAndAddExpenseWrapper() {
     });
   }
 
-  console.log("seven", sevenDate, "before", beforeDate, expenses, beforeSevenExpense, selectedDateExpense);
+  console.log("parent", expenses);
 
   return (
     <section>
@@ -142,9 +137,11 @@ export default function ShowAndAddExpenseWrapper() {
               sevenDateInString={sevenDate.string}
               beforeDateInString={beforeDate.string}
             />
+            
+            {/* <ExpenseLoadingSkeleton/> */}
 
             {
-              isLoading ? (<p className="text-white">Loading....</p>)
+              isLoading ? (<ExpenseLoadingSkeleton/>)
                 :
                 (
                   <ShowAllExpenses singleDateExpense={selectedDateExpense || []} />

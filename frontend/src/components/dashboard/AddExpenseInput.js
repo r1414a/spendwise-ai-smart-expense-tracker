@@ -42,7 +42,8 @@ export default function AddExpenseInput({ selectedDate, setExpenses, mutateBefor
       if (selectedDate.from === "before") {
         mutateBefore();
       } else {
-        setExpenses((prev) => ({...prev, res}));
+        setExpenses((prev) => ([...prev, res]));
+        // mutateSeven();
       }
 
       setExpenseDetails({ description: "", amount: "" });
@@ -107,7 +108,7 @@ export default function AddExpenseInput({ selectedDate, setExpenses, mutateBefor
         </div>
         <button
           type="submit"
-          disabled={!expenseDetails.description || expenseDetails.amount === 0}
+          disabled={!expenseDetails.description || expenseDetails.amount === 0 || isMutating}
           className="bg-lightred hover:bg-mywhite text-mywhite hover:text-gray font-medium rounded-md text-sm px-4 py-2.5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-80 disabled:hover:bg-lightred"
         >
           {isMutating ? "Adding" : "Add"}
