@@ -16,7 +16,7 @@ const PORT = 8000;
 
 app.use(cors({
     origin: process.env.CLIENT_DEV,
-    methods: ["GET","POST"],
+    methods: ["GET","POST","DELETE"],
 }))
 
 

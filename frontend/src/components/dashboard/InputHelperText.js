@@ -11,19 +11,19 @@ export default function InputHelperText() {
         amount, and categorizes it for you.
       </p>
 
-      <div className="text-mywhite text-sm border border-lightgray/30 rounded-lg px-3 py-2">
+      <div className="text-mywhite text-sm border border-lightgray/30 rounded-sm px-3 py-4">
         <span className="mx-2 relative font-medium text-mywhite before:bg-lightred before:absolute before:block before:-inset-1 before:-skew-y-2 ">
           <span className="relative">Billi ka khana</span>
         </span>{" "}
         → 🐱 Cat food <span className="text-lightgray">(Pet category)</span>
       </div>
-      <div className="text-mywhite text-sm border border-lightgray/30 rounded-lg px-3 py-2">
+      <div className="text-mywhite text-sm border border-lightgray/30 rounded-sm px-3 py-4">
         <span className="mx-2 relative font-medium text-mywhite before:bg-lightred before:absolute before:block before:-inset-1 before:-skew-y-1">
           <span className="relative">1kg ki chini 120rs</span>
         </span>
         → 🍬 Sugar ₹120 <span className="text-lightgray">(Groceries)</span>
       </div>
-      <div className="text-mywhite text-sm border border-lightgray/30 rounded-lg px-3 py-2">
+      <div className="text-mywhite text-sm border border-lightgray/30 rounded-sm px-3 py-4">
         <span className="mx-2 relative font-medium text-mywhite before:bg-lightred before:absolute before:block before:-inset-1 before:-skew-y-1">
           <span className="relative">Auto se office gaya 50rs</span>
         </span>{" "}

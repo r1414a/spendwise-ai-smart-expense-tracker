@@ -77,7 +77,7 @@ export default function AddExpenseInput({ selectedDate, setExpenses, mutateBefor
               type="text"
               value={expenseDetails.description}
               id="expense_description"
-              className="block w-full p-2.5 bg-lightblue text-sm text-boxbg border border-lightgray/20 rounded-lg tracking-wider focus:ring-0 focus:outline-none placeholder:tracking-wider placeholder:text-myborder/70"
+              className="block w-full h-10 px-2.5 bg-lightblue text-sm text-boxbg border border-lightgray/20 rounded-sm tracking-wider focus:ring-0 focus:outline-none placeholder:tracking-wider placeholder:text-myborder/70"
               placeholder="1kg ki chini"
               required
             />
@@ -100,7 +100,7 @@ export default function AddExpenseInput({ selectedDate, setExpenses, mutateBefor
                 }))
               }
               aria-describedby="helper-text-explanation"
-              className="block w-full p-2.5 bg-lightblue text-sm text-boxbg border border-lightgray/20 rounded-lg tracking-wider focus:ring-0 focus:outline-none placeholder:tracking-wider placeholder:text-myborder/70"
+              className="block w-full h-10 px-2.5 bg-lightblue text-sm text-boxbg border border-lightgray/20 rounded-sm tracking-wider focus:ring-0 focus:outline-none placeholder:tracking-wider placeholder:text-myborder/70"
               placeholder="120"
               required
             />
@@ -109,7 +109,7 @@ export default function AddExpenseInput({ selectedDate, setExpenses, mutateBefor
         <button
           type="submit"
           disabled={!expenseDetails.description || expenseDetails.amount === 0 || isMutating}
-          className="bg-lightred hover:bg-mywhite text-mywhite hover:text-gray font-medium rounded-md text-sm px-4 py-2.5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-80 disabled:hover:bg-lightred"
+          className="bg-lightred hover:bg-mywhite text-mywhite hover:text-gray font-medium rounded-sm text-sm px-4 h-10 cursor-pointer disabled:cursor-not-allowed disabled:opacity-80 disabled:hover:bg-lightred"
         >
           {isMutating ? "Adding" : "Add"}
         </button>

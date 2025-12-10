@@ -144,7 +144,16 @@ export default function ShowAndAddExpenseWrapper() {
               isLoading ? (<ExpenseLoadingSkeleton/>)
                 :
                 (
-                  <ShowAllExpenses singleDateExpense={selectedDateExpense || []} />
+                  <ShowAllExpenses 
+                    singleDateExpense={selectedDateExpense || []}
+                    isBefore={beforeDate.iso ? true: false}  
+                    expenseAfterDelete={
+                      (id) => {
+                        setExpenses(expenses.filter(item => item._id !== id))
+                      }
+                    }
+                    mutateBefore={mutateBefore}
+                  />
                 )
             }
 

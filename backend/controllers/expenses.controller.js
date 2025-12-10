@@ -6,7 +6,7 @@ import { previousMonthCategorySpendingMapping } from "../utils/previousMonthCate
 
 export const saveExpenses = async (req, res) => {
   const { description_original, amount, date } = req.body.expenseDetails;
-  console.log("adding expense: ",description_original, amount, date);
+  // console.log("adding expense: ",description_original, amount, date);
   try {
     if (!description_original.trim() || !amount || !date) {
       return res
@@ -95,7 +95,7 @@ export const getCoreMetrics = async(req,res) => {
 
     //total expense of current month till now
     const totalSpendInCurrentMonth = tillNowCurrentMonthExpenses.reduce((sum,e) => sum + e.amount, 0);
-    console.log("totalSpendInCurrentMonth",totalSpendInCurrentMonth)
+    // console.log("totalSpendInCurrentMonth",totalSpendInCurrentMonth)
     
     const previouMonthSpendingDays = new Set(previousMonthExpenses.map(e => new Date(e.date).getDate())).size;
 
@@ -110,7 +110,7 @@ export const getCoreMetrics = async(req,res) => {
 
     //top category & top 3 category expenses previous month
     const top3CategoryExpensesPreviousMonth =  previousMonthCategorySpendingMapping(previousMonthExpenses);
-    console.log(top3CategoryExpensesPreviousMonth)
+    // console.log(top3CategoryExpensesPreviousMonth)
     //top category & top 3 category expenses current month
     const top3CategoryExpensesCurrentMonth =  previousMonthCategorySpendingMapping(tillNowCurrentMonthExpenses);
   
@@ -135,13 +135,13 @@ export const getCoreMetrics = async(req,res) => {
 
 export const getExpenseForADate = async(req,res) => {
   const {date} = req.body;
-  console.log("DATE IN BODY",date);
+  // console.log("DATE IN BODY",date);
   const today = new Date();
   const todayEnd = today.setHours(23,59,59,0);
   const todaycopy = new Date();
   const sevendaybeforedate = todaycopy.setDate(todaycopy.getDate() - 6);
   const sevendaybeforedatestart = new Date(sevendaybeforedate).setHours(0,0,0,0);
-  console.log(date);
+  // console.log(date);
 
   let expenses;
   try{
@@ -159,9 +159,9 @@ export const getExpenseForADate = async(req,res) => {
     //   )
     // }
 
-    console.log("bodyDate is less",new Date(date).getTime(),sevendaybeforedatestart);
+    // console.log("bodyDate is less",new Date(date).getTime(),sevendaybeforedatestart);
     if(new Date(date).getTime() < sevendaybeforedatestart){
-      console.log("bodyDate is less")
+      // console.log("bodyDate is less")
       const bodyDateStart = new Date(date).setHours(0,0,0,0);
       const bodyDateEnd = new Date(date).setHours(23,59,59,0);
       expenses = await Expense.find(
@@ -187,7 +187,7 @@ export const getExpenseForADate = async(req,res) => {
         }
       }
     ).lean();
-    console.log("Expenses", expenses);
+    // console.log("Expenses", expenses);
 
     if(!expenses.length){
       return res.status(404).json({message: "No expenses found for past 7 days."});
@@ -216,7 +216,7 @@ export const getExpenseForADate = async(req,res) => {
 export const getCharts = async(req,res) => {
   // const now = new Date();
   const currentDayEnd = new Date(new Date().setHours(23,59,59,0))
-  console.log(currentDayEnd);
+  // console.log(currentDayEnd);
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth();
   const currentMonthStart = new Date(currentYear, currentMonth, 1);
@@ -321,4 +321,17 @@ export const getCharts = async(req,res) => {
   }
 }
 
-
+export const deleteExpense = async(req,res) => {
+  const {id} = req.params;
+  console.log("deleteExpense id: ",id);
+  try{
+    const deleted = await Expense.findByIdAndDelete(id);
+    if (!deleted) {
+      return res.status(404).json({ message: "Expense not found" });
+    }
+    return res.status(200).json({message: "Expense deleted successfully"});
+  }catch(err){
+    console.log("Error in deleting expense: ", err);
+    res.status(500).json({ message: "Error while deleting expense." });
+  }
+}

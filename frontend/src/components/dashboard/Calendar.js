@@ -30,7 +30,7 @@ export default function Calendar({handleDateClick,beforeDateInString}) {
           type="date"
           value={beforeDateInString}
           onChange={(e) => handleDateClick(e,e.target.valueAsDate)}
-          className="bg-lightblue border border-lightgray/40 text-gray text-sm rounded-md block w-36 p-2.5 md:p-3 placeholder:text-gray cursor-pointer"
+          className="bg-lightblue border border-lightgray/40 text-gray text-sm rounded-sm block w-36 h-10 sm:h-12 px-3 placeholder:text-gray cursor-pointer"
           placeholder="Select date"
           min={minimum}
           max={maximum}

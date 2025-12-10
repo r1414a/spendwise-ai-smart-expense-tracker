@@ -5,7 +5,7 @@ const FEATURES = [
     {
         icon: "🧠",
         title: "Smart Categorization",
-        desc: "Automatically understands your expense like “1kg bhindi” → “Groceries”"
+        desc: "Automatically understands your expense like “meowni ka khana” → “Cat Food (Family & pet) Category”"
     },
     {
         icon: "🤖",

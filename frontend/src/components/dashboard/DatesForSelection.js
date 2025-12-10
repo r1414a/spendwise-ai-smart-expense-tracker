@@ -32,7 +32,7 @@ const DatesForSelection = ({ handleDateClick, sevenDateInString, beforeDateInStr
               new Date(item).toISOString().split("T")[0] == sevenDateInString
                 ? "bg-lightred "
                 : "bg-lightblue text-gray outline outline-lightgray/40"
-            } rounded-md py-2 md:py-2.5 px-3 md:px-4 cursor-pointer hover:bg-lightred hover:text-mywhite`}
+            } rounded-sm w-10 h-10 sm:w-12 sm:h-12 cursor-pointer hover:bg-lightred hover:text-mywhite`}
           >
             {item.getDate()}
           </button>
