@@ -9,7 +9,7 @@ export default function Hero() {
     <main className="relative bg-lightblue">
       <div className="absolute top-56 right-1/2  w-96 h-96 bg-gradient-to-tr from-mywhite to-darkblue opacity-30 blur-3xl"></div>
       <div className="relative z-10 min-h-screen w-full md:max-w-screen-xl mx-0 md:mx-auto flex flex-col md:flex-row gap-4 items-center px-4">
-        <div className="basis-full md:basis-2/3 pt-40 md:pt-22 space-y-3 md:space-y-2">
+        <div className="basis-full md:basis-2/3 pt-40 md:pt-22 space-y-3">
           <AnimatedHeroBlock>
           <HeroHeading/>
           <HeroSubHeading/>
