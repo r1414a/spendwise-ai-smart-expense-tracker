@@ -142,11 +142,12 @@ export const getExpenseForADate = async(req,res) => {
   const sevendaybeforedate = todaycopy.setDate(todaycopy.getDate() - 6);
   const sevendaybeforedatestart = new Date(sevendaybeforedate).setHours(0,0,0,0);
   // console.log(date);
+  const nowTime = date ? new Date(date).getTime() : new Date().getTime();
 
   let expenses;
   try{
 
-    const bodyDate = new Date(date).toISOString().split("T")[0];
+    // const bodyDate = new Date(date).toISOString().split("T")[0];
     // console.log(pastSeventDaysExpenseCacheMap.get(bodyDate));
 
     //check cache first if data present return
@@ -160,7 +161,7 @@ export const getExpenseForADate = async(req,res) => {
     // }
 
     // console.log("bodyDate is less",new Date(date).getTime(),sevendaybeforedatestart);
-    if(new Date(date).getTime() < sevendaybeforedatestart){
+    if(nowTime < sevendaybeforedatestart){
       // console.log("bodyDate is less")
       const bodyDateStart = new Date(date).setHours(0,0,0,0);
       const bodyDateEnd = new Date(date).setHours(23,59,59,0);

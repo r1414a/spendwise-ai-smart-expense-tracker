@@ -3,7 +3,7 @@ export default async function CoreMetrics() {
     method: "GET",
   });
   const { result } = await res.json();
-  console.log(result);
+  // console.log(result);
   return (
     <section className="max-w-screen-xl mx-auto pt-40 pb-32 px-4 md:px-32">
       <div className="flex flex-col lg:flex-row gap-10">

@@ -12,7 +12,7 @@ const deleteExpense = async(url, {arg}) => {
   return data.result;
 }
 
-export default function DeleteExpense({isBefore, mutateBefore, expenseAfterDelete,expenseid}){
+export default function DeleteExpense({singleDateExpense, isBefore, mutateBefore, expenseAfterDelete,expenseid}){
     const {
     trigger,
     isMutating,
@@ -20,15 +20,16 @@ export default function DeleteExpense({isBefore, mutateBefore, expenseAfterDelet
   } = useSWRMutation('/api/expense/delete', deleteExpense);
 
   async function handleExpenseDelete(){
-    console.log(expenseid)
+    // console.log(expenseid)
       try{
         const res = await trigger({
           expenseid
         });
-        console.log("delete res: ", res);
+        // console.log("delete res: ", res);
 
         if(isBefore){
-            mutateBefore();
+            const removed = singleDateExpense.filter(item => item._id !== expenseid)
+            mutateBefore(removed, {revalidate: false});
         }
 
         expenseAfterDelete(expenseid);

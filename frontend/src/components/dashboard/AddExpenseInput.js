@@ -16,7 +16,7 @@ const addExpense = async (url, { arg }) => {
   return data.result;
 }
 
-export default function AddExpenseInput({ selectedDate, setExpenses, mutateBefore }) {
+export default function AddExpenseInput({ beforeSevenExpense,selectedDate, setExpenses, mutateBefore }) {
   const [expenseDetails, setExpenseDetails] = useState({
     description: "",
     amount: 0,
@@ -37,10 +37,10 @@ export default function AddExpenseInput({ selectedDate, setExpenses, mutateBefor
         amount: expenseDetails.amount,
         date: selectedDate.iso
       })
-      console.log("result", res);
+      // console.log("result", res);
 
       if (selectedDate.from === "before") {
-        mutateBefore();
+        mutateBefore([...beforeSevenExpense, res], {revalidate: false});
       } else {
         setExpenses((prev) => ([...prev, res]));
         // mutateSeven();

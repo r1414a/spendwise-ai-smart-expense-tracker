@@ -3,7 +3,7 @@ import { FaRobot } from "react-icons/fa";
 import DeleteExpense from "./DeleteExpense";
 
 export default function ShowAllExpenses({ isBefore, mutateBefore, singleDateExpense, expenseAfterDelete }) {
-  console.log("singleDateExpense", singleDateExpense);
+  // console.log("singleDateExpense", singleDateExpense);
 
   
   return (
@@ -32,7 +32,7 @@ export default function ShowAllExpenses({ isBefore, mutateBefore, singleDateExpe
                         ₹{expense.amount}
                       </h3>
                       </div>
-                      <DeleteExpense expenseid={expense._id} expenseAfterDelete={expenseAfterDelete} isBefore={isBefore} mutateBefore={mutateBefore}/>
+                      <DeleteExpense singleDateExpense={singleDateExpense} expenseid={expense._id} expenseAfterDelete={expenseAfterDelete} isBefore={isBefore} mutateBefore={mutateBefore}/>
                       
                     </div>
                     <div className="space-y-1">

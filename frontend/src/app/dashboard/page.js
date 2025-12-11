@@ -14,7 +14,7 @@ export default async function Dashboard() {
   }
 
 
-  console.log(chartData);
+  // console.log(chartData);
   return (
     <main className="overflow-x-hidden">
       <div className="z-20 absolute right-44 top-44 w-96 h-96 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 blur-3xl"></div>

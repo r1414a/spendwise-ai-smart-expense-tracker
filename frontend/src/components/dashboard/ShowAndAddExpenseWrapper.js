@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import AddExpenseInput from "./AddExpenseInput";
 import DatesForSelection from "./DatesForSelection";
 import ShowAllExpenses from "./ShowAllExpenses";
@@ -8,7 +8,7 @@ import useSWR from "swr";
 import ExpenseLoadingSkeleton from "./ExpenseLoadingSkeleton";
 
 const getExpenses = async ([url, date]) => {
-  console.log("getEXPENSE", date);
+  // console.log("getEXPENSE", date);
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${url}`, {
     method: "POST",
     headers: {
@@ -40,10 +40,10 @@ export default function ShowAndAddExpenseWrapper() {
 
   // const isDateLessThanPastSevenDays = new Date(selectedDate.iso).getTime() < sevendaybeforedatestart
 
-  const key = !expenses.length ? ["/api/expense/get-expense", sevenDate.iso] : null;
+  // const key = !expenses.length ? ["/api/expense/get-expense", sevenDate.iso] : null;
 
-  const { data: pastSevenExpense, isLoading, mutate: mutateSeven } = useSWR(
-    key,
+  const { data: pastSevenExpense, isLoading } = useSWR(
+    ["/api/expense/get-expense"],
     getExpenses,
     {
       // fallbackData: singleDateExpense,
@@ -77,7 +77,7 @@ export default function ShowAndAddExpenseWrapper() {
 
   // new Date("2025-11-19T19:00:00.000Z")
   const selectedDateExpense = useMemo(() => {
-    console.log("running memo", expenses)
+    // console.log("running memo", expenses)
 
     if (beforeDate.iso) {
       return beforeSevenExpense || [];
@@ -87,7 +87,7 @@ export default function ShowAndAddExpenseWrapper() {
 
     const start = new Date(sevenDate.iso).setHours(0, 0, 0, 0);
     const end = new Date(sevenDate.iso).setHours(23, 59, 59, 0)
-    console.log(start, end)
+    // console.log(start, end)
 
     return expenses.filter((item) => {
       const itemTime = new Date(item.date).getTime();
@@ -97,7 +97,7 @@ export default function ShowAndAddExpenseWrapper() {
 
   function handleDateClick(e, date) {
     const { name } = e.target;
-    console.log("clicked date", date, name);
+    // console.log("clicked date", date, name);
     if (name === "seven") {
       if (beforeDate.iso) {
         setBeforeDate({
@@ -122,7 +122,7 @@ export default function ShowAndAddExpenseWrapper() {
     });
   }
 
-  console.log("parent", expenses);
+  // console.log("parent", expenses);
 
   return (
     <section>
@@ -152,6 +152,7 @@ export default function ShowAndAddExpenseWrapper() {
                         setExpenses(expenses.filter(item => item._id !== id))
                       }
                     }
+                    // beforeSevenExpense={beforeSevenExpense}
                     mutateBefore={mutateBefore}
                   />
                 )
@@ -162,6 +163,7 @@ export default function ShowAndAddExpenseWrapper() {
           <div className="order-1 md:order-2 basis-1/3">
             <AddExpenseInput selectedDate={beforeDate.iso ? { ...beforeDate, from: "before" } : { ...sevenDate, from: "seven" }}
               setExpenses={setExpenses}
+              beforeSevenExpense={beforeSevenExpense}
               mutateBefore={mutateBefore} />
           </div>
         </div>

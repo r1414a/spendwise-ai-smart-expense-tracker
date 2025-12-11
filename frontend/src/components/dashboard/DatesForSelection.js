@@ -5,12 +5,12 @@ import Calendar from "./Calendar";
 
 
 const DatesForSelection = ({ handleDateClick, sevenDateInString, beforeDateInString }) => {
-  console.log("dateForSelection")
+  // console.log("dateForSelection")
   const today = new Date();
   const last7Days = useMemo(() => {
     const result = [...Array(7)].map((_, index) => {
       const d = new Date();
-      console.log(d);
+      // console.log(d);
       d.setDate(today.getDate() - index);
       return d;
     });

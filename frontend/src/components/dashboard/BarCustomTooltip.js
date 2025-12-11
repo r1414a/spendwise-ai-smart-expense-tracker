@@ -3,7 +3,7 @@ export default function BarCustomTooltip({ active, payload, label }){
     const currentYear = today.getFullYear();
     const currentMonth = today.getMonth();
 
-    console.log(payload,label);
+    // console.log(payload,label);
     if (active && payload && payload.length) {
         return (
           <div className="custom-tooltip space-y-1" style={{ backgroundColor: 'white', padding: '10px', border: '1px solid #ccc' }}>
