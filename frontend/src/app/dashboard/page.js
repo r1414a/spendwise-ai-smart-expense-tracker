@@ -9,6 +9,7 @@ export default async function Dashboard() {
   try{
     const res = await fetch(`${process.env.API_URL}/api/expense/charts`);
     chartData = await res.json();
+    console.log("chart Data: ", chartData);
   }catch(err){
     console.log(err);
   }
